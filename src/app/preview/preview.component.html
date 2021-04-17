@@ -1,0 +1,29 @@
+<div id="scene" controls 
+    (mouseWheelUp)="zoomIn($event)" 
+    (mouseWheelDown)="zoomOut($event)"
+    (mouseMove)="mouseMove($event)"
+    (mouseUp)="mouseUp($event)"
+    (mouseDown)="mouseDown($event)"
+    (mouseWheelUpWithAlt)="increaseIterations($event)"
+    (mouseWheelDownWithAlt)="decreaseIterations($event)"
+    (mouseWheelUpWithShift)="toggleColorModeUp($event)"
+    (mouseWheelDownWithShift)="toggleColorModeDown($event)"
+    (mouseWheelUpWithCtrl)="toggleModifierModeUp($event)"
+    (mouseWheelDownWithCtrl)="toggleModifierModeDown($event)"
+    (rightClick)="saveDialog($event)"
+    (click)="onClick($event)"
+></div>
+<div id="fps"><p>{{ fps }} fps <fa-icon [icon]="faIcon" (click)="toggleVolume()"></fa-icon></p></div>
+<div id="settings"><p>
+    <small *ngIf="gpu">{{ gpu }}</small><br *ngIf="gpu">
+    <span class="key">Iterations:</span>{{ iterations | number:'1.0-0' }} <small> (alt+scroll)</small><br>
+    <span class="key">Zoom:</span>{{ zoom | number:'1.0-0' }}<br>
+    <span class="key">Colors:</span>{{ COLOR_MODES[colorMode] }}<small> (shift+scroll)</small><br>
+    <span class="key">Modifiers:</span>{{ MODIFIER_MODES[modifierMode] }} <small> (ctrl+scroll)</small>
+</p></div>
+<div id="mode"><p>
+    <span id="tutorial" (click)="openTutorial()"><fa-icon [icon]="faGamepad"></fa-icon> Tutorial</span><br>
+    <a href="https://github.com/MindLaborDev/Frac" rel="noreferrer noopener"><span id="source"><fa-icon [icon]="faCodeBranch"></fa-icon> Source Code</span></a>
+</p></div>
+<div id="save" (click)="onSave($event)"><p>Download Image...</p></div>
+<tutorial *ngIf="tutorialOpened" (click)="closeTutorial()"></tutorial>

@@ -1,0 +1,3 @@
+ng build --prod --base-href "https://mindlabordev.github.io/Frac/"
+npx angular-cli-ghpages --dir=dist/frac
+

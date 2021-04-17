@@ -1,0 +1,45 @@
+
+@import "../styles/variables.scss";
+
+#content {
+    $width: 300px;
+    $height: 220px;
+
+    position: absolute;
+    top: calc(50% - #{$height});
+    left: calc(50% - #{$width});
+    width: 80%;
+    height: 80%;
+    max-width: $width*2;
+    max-height: $height*2;
+    background-color: $dark-color-solid;
+    padding: 30px 50px;
+}
+
+* {
+    color: #fff;
+}
+
+ul {
+    margin: 30px 0;
+    font-size: 18px;
+    list-style: none;
+
+    li {
+        font-size: 18px;
+        height: 30px;
+        color: #ffffffaa;
+
+        span {
+            display: inline-block;
+            width: 140px;
+            font-size: 20px;
+        }
+    }    
+}
+
+#proc {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
