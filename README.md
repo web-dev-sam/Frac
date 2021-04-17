@@ -1,7 +1,7 @@
 
 ## 🔴 Live Demo
 &nbsp;<br>&nbsp;
-<a href="https://mind-frac.vercel.app/">
+<a href="https://frac.vercel.app/">
   <img align="center" src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/frac.svg" />
 </a>
 
