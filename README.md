@@ -2,7 +2,7 @@
 ## 🔴 Live Demo
 &nbsp;<br>&nbsp;
 <a href="https://frac.vercel.app/">
-  <img align="center" src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/frac.svg" />
+  <img align="center" src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/Group 5.png" />
 </a>
 
 &nbsp;<br>&nbsp;
