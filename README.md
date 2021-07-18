@@ -1,9 +1,12 @@
 
-## 🔴 Live Demo
+
 &nbsp;<br>&nbsp;
-<a href="https://frac.vercel.app/">
-  <img align="center" src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/Group 5.png" />
-</a>
+<div align="center">
+  <h2>🔴 Live Demo</h2>
+  <a href="https://frac.vercel.app/">
+    <img align="center" src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/Group 5.png" />
+  </a>
+</div>
 
 &nbsp;<br>&nbsp;
 
