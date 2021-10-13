@@ -10,6 +10,18 @@ varying vec2 v_cursor_position;
 #extension GL_OES_standard_derivatives : enable
 #endif
 
+#define PI 3.14159265
+#define cx_sub(a, b) vec2(a.x - b.x, a.y - b.y)
+#define cx_add(a, b) vec2(a.x + b.x, a.y + b.y)
+#define cx_abs(a) sqrt(a.x * a.x + a.y * a.y)
+#define cx_mul(a, b) vec2(a.x*b.x-a.y*b.y, a.x*b.y+a.y*b.x)
+#define cx_div(a, b) vec2(((a.x*b.x+a.y*b.y)/(b.x*b.x+b.y*b.y)),((a.y*b.x-a.x*b.y)/(b.x*b.x+b.y*b.y)))
+#define cx_modulus(a) length(a)
+#define cx_conj(a) vec2(a.x,-a.y)
+#define cx_arg(a) atan2(a.y,a.x)
+#define cx_sin(a) vec2(sin(a.x) * cosh(a.y), cos(a.x) * sinh(a.y))
+#define cx_cos(a) vec2(cos(a.x) * cosh(a.y), -sin(a.x) * sinh(a.y))
+
 float aastep(float threshold, float value) {
   #ifdef GL_OES_standard_derivatives
     float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678118654757;
@@ -80,6 +92,38 @@ float mandelbrot_3() {
 }
 
 
+// z^3 - 1
+vec2 f(vec2 z) {
+    return cx_mul(cx_mul(z, z), z) - vec2(1.0, 0.0);
+} 
+// f(z) derivated
+// 3*z^2
+vec2 fPrim(vec2 z) {
+    return cx_mul(cx_mul(z, z), vec2(3.0,0.0));
+}
+vec2 one = vec2(1, 0);
+float mandelbrot_4() {
+    vec2 z = v_position.xy;
+    vec2 oldZ = z;
+    float s = 0.0;
+    float iterations = 0.0;
+    while(iterations < v_iterations){
+        z = cx_sub(z, cx_div(f(z), fPrim(z))); 
+        if(abs(oldZ.x - z.x) < 0.00001 && abs(oldZ.y - z.y) < 0.00001) {
+            break;
+        }
+        
+        vec2 w = cx_div(one, cx_sub(oldZ, z));
+        float wAbs = cx_abs(w);
+        
+        s += exp(-wAbs);
+        oldZ = z;
+        iterations++;
+    }
+    return iterations;
+}
+
+
 void main() {
     fractal = v_position.xy;
 
@@ -92,8 +136,9 @@ void main() {
         current_iterations = mandelbrot_2();
     } else if (v_modifiermode == 3.0) {
         current_iterations = mandelbrot_3();
+    } else if (v_modifiermode == 4.0) {
+        current_iterations = mandelbrot_4();
     }
-
 
     // Assign colors
     if (current_iterations >= v_iterations) {
@@ -117,8 +162,6 @@ void main() {
             float blue = aastep(aa, current_iterations / (current_iterations + 8.0));
             gl_FragColor = vec4(hsv2rgb(vec3(red, green, blue)), 1);
         }
-
-        
     }
 
 }

@@ -126,26 +126,42 @@ float mandelbrot_3() {
     return current_iterations;
 }
 
+
 // z^3 - 1
 vec2 f(vec2 z) {
     return cx_mul(cx_mul(z, z), z) - vec2(1.0, 0.0);
 } 
-
 // f(z) derivated
 // 3*z^2
 vec2 fPrim(vec2 z) {
     return cx_mul(cx_mul(z, z), vec2(3.0,0.0));
 }
-
 vec2 one = vec2(1, 0);
 float mandelbrot_4() {
     vec2 z = v_position.xy;
+    vec2 roots[5] = vec2[5](
+        vec2(-0.5, -0.8660254037844),
+        vec2(-0.5, 0.8660254037844),
+        vec2(1, 0),
+        vec2(1, 0),
+        vec2(1, 0)
+    );
+
     vec2 oldZ = z;
     float s = 0.0;
     float iterations = 0.0;
     while(iterations < v_iterations){
         z = cx_sub(z, cx_div(f(z), fPrim(z))); 
-        if(abs(oldZ.x - z.x) < 0.00001 && abs(oldZ.y - z.y) < 0.00001) {
+
+        bool found = false;
+        for (int i = 0; i < 5; i++) {
+            if (abs(z.x - roots[i].x) < 0.00001 && abs(z.y - roots[i].y) < 0.00001) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
             break;
         }
         
@@ -158,6 +174,7 @@ float mandelbrot_4() {
     }
     return iterations;
 }
+
 
 void main () {
     fractal = vec2(0.0, 0.0);
