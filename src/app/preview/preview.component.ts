@@ -45,7 +45,7 @@ export class PreviewComponent implements AfterViewInit {
   readonly MUSIC_SCROLL_SENSITIVITY = 2;
   readonly JULIA_PREVIEW_SIZE = 0.25;
   readonly COLOR_MODES = ["Normal", "Smooth", "Night"];
-  readonly MODIFIER_MODES = ["Normal", "Spikes", "Sponge", "3-head"];
+  readonly MODIFIER_MODES = ["Normal", "Spikes", "Sponge", "3-head", "Newton"];
 
   /* ################################ */
   /* ##########  SETTINGS  ########## */
@@ -77,7 +77,7 @@ export class PreviewComponent implements AfterViewInit {
   currentFrame: number = 0;
   lastTime: any;
   colorMode: number = 0;
-  modifierMode: number = 0;
+  modifierMode: number = 4;
   loopHandler: any;
   gpu: string = "";
   audio: any;
@@ -449,8 +449,8 @@ export class PreviewComponent implements AfterViewInit {
    * @param type Fragment or vertex shader
    */
   async fetchShader(name: string, type: 'fragment' | 'vertex') {
-    let prodPath = `../../Frac/assets/shaders/${type}/${name}.glsl`;
-    let devPath = `../../assets/shaders/${type}/${name}.glsl`;
+    const prodPath = `../../Frac/assets/shaders/${type}/${name}.glsl`;
+    const devPath = `../../assets/shaders/${type}/${name}.glsl`;
     const result = await fetch(isDevMode() ? devPath : prodPath);
     return await result.text();
   }
