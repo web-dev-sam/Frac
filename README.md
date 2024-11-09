@@ -4,7 +4,7 @@
 <div align="center">
   <h2>🔴 Live Demo</h2>
   <a href="https://frac.vercel.app/">
-    <img src="https://raw.githubusercontent.com/MindLaborDev/MindLaborDev/master/preview/Group 5.png" />
+    <img src="https://raw.githubusercontent.com/web-dev-sam/web-dev-sam/master/preview/Group%205.png" />
   </a>
 </div>
 
