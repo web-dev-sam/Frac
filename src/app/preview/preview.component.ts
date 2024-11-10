@@ -15,6 +15,7 @@ import packageInfo from "../../../package.json";
 import * as THREE from "three";
 // biome-ignore lint/style/useImportType: <explanation>
 import { HttpClient } from "@angular/common/http";
+import { firstValueFrom } from "rxjs";
 
 type MandelUniform = {
 	offsetX: number;
@@ -487,12 +488,10 @@ export class PreviewComponent implements AfterViewInit {
 	 * @param name Name of the glsl file
 	 * @param type Fragment or vertex shader
 	 */
-	async fetchShader(name: string, type: "fragment" | "vertex") {
-		const prodPath = `../../Frac/assets/shaders/${type}/${name}.glsl`;
-		const devPath = `../../assets/shaders/${type}/${name}.glsl`;
-		const result = await fetch(isDevMode() ? devPath : prodPath);
-		return await result.text();
-	}
+	async fetchShader(name: string, type: 'fragment' | 'vertex'): Promise<string> {
+    const path = `assets/shaders/${type}/${name}.glsl`;
+    return firstValueFrom(this.http.get(path, { responseType: 'text' }));
+  }
 
 	/**
 	 * Handles the zoomIn event

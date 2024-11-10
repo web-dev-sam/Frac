@@ -19,6 +19,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "ng-three": "^0.87.2",
+    "rxjs": "^7.8.1",
     "three": "^0.126.0"
   },
   "devDependencies": {
