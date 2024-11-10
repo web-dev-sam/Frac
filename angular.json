@@ -8,7 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": false,
+          "skipTests": true,
           "standalone": true
         },
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/frac",
             "index": "src/index.html",
@@ -87,12 +87,6 @@
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "frac:build"
-          }
         }
       }
     }
