@@ -140,11 +140,9 @@ export class PreviewComponent implements AfterViewInit {
 		this.loaded = true;
 
 		// Load audio
-		const prodPath = "../../Frac/assets/sounds/ambient.wav";
-		const devPath = "../../assets/sounds/ambient.wav";
-		this.audio = new Audio(isDevMode() ? devPath : prodPath);
+		this.audio = new Audio("assets/sounds/ambient.wav");
 		this.audio.loop = true;
-		this.audio.autoplay = false;
+		this.audio.autoplay = true;
 		const source = this.audioContext.createMediaElementSource(this.audio);
 		this.biquadFilter = this.audioContext.createBiquadFilter();
 		this.biquadFilter.type = "lowshelf";
