@@ -110,7 +110,6 @@ export class PreviewComponent implements AfterViewInit {
 	loaded = false;
 
 	constructor(private http: HttpClient) {
-		console.log("constructor... TODO: move init?");
 		console.log(
 			`%cFrac v${packageInfo.version}`,
 			"background-color: #1e90ff; color: #fff; font-size: 16px; padding: 8px 16px; border-radius: 100px;",
