@@ -38,4 +38,4 @@ Click on "Tutorial" at the bottom left to show the controls (or press "t").
 
 ## 👨🏽‍💻 Development
 * Run `npm install`
-* Run `ng serve --open`
+* Run `npm run dev`
