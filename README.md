@@ -9,6 +9,9 @@ _A web application that renders the Mandelbrot using GPU power with three.js and
 
 &nbsp;
 
+## Why does this exist?
+I wanted to render the Mandelbrot on the GPU in the browser.
+
 ## How it looks
 
 🔴 Live demo: https://frac.vercel.app/

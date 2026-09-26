@@ -47,5 +47,6 @@
         "Run `npm run dev`"
       ]
     }
-  ]
+  ],
+  "why": "I wanted to render the Mandelbrot on the GPU in the browser."
 }
